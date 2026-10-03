@@ -1,5 +1,6 @@
-﻿using Hareef.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Hareef.Models;
+
 namespace Hareef.Data
 {
     public class HareefDbContext : DbContext
@@ -8,7 +9,7 @@ namespace Hareef.Data
         {
         }
 
-            public DbSet<Artisan> Artisans { get; set; }
-        }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Artisan> Artisans { get; set; }
     }
-
+}

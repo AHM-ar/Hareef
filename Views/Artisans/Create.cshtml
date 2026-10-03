@@ -1,0 +1,62 @@
+﻿@model Hareef.Models.Artisan
+
+@{
+    ViewData["Title"] = "تسجيل حرفي جديد - حريف";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 rounded-4 p-4 bg-white">
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <h3 class="fw-bold text-dark">انضم كحرفي أو مهني</h3>
+                        <p class="text-muted small">املأ بياناتك لكي يراك العملاء ويتواصلوا معك</p>
+                    </div>
+
+                    <form asp-action="Create" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3 small"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label fw-semibold">اسم الحرفي</label>
+                            <input asp-for="Name" class="form-control rounded-3 py-2" placeholder="مثال: علي عطا" required />
+                            <span asp-validation-for="Name" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Profession" class="form-label fw-semibold">المهنة / التخصص</label>
+                            <input asp-for="Profession" class="form-control rounded-3 py-2" placeholder="مثال: صيانة مطابخ ألومنيوم" required />
+                            <span asp-validation-for="Profession" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Bio" class="form-label fw-semibold">نبذة تعريفية</label>
+                            <textarea asp-for="Bio" class="form-control rounded-3 py-2" rows="3" placeholder="مثال: صناعي متخصص في صيانة المطابخ باحترافية عالية..."></textarea>
+                            <span asp-validation-for="Bio" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="WhatsAppNumber" class="form-label fw-semibold">رقم الواتساب للتواصل (مع رمز الدولة)</label>
+                            <input asp-for="WhatsAppNumber" class="form-control rounded-3 py-2" placeholder="مثال: 966500000000+" required />
+                            <span asp-validation-for="WhatsAppNumber" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="ProfileImage" class="form-label fw-semibold">رابط الصورة الشخصية (اختياري)</label>
+                            <input asp-for="ProfileImage" class="form-control rounded-3 py-2" placeholder="/images/logo.png" />
+                            <span asp-validation-for="ProfileImage" class="text-danger small"></span>
+                        </div>
+
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg rounded-pill fw-bold shadow-sm">حفظ ونشر البيانات</button>
+                        </div>
+                    </form>
+
+                    <div class="text-center mt-3">
+                        <a asp-action="Index" class="text-decoration-none small text-muted">العودة إلى قائمة الحرفيين</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "تسجيل الدخول";
+}
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="card shadow-sm p-4 border-0" style="width: 100%; max-width: 450px; background-color: #ffffff; border-radius: 8px;">
+
+        <!-- رأس البطاقة: الأيقونة والعنوان -->
+        <div class="text-center mb-4">
+            <div class="mb-3">
+                <span class="p-3 bg-light rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                    <i class="fas fa-user-circle fa-2x text-secondary"></i>
+                </span>
+            </div>
+            <h3 class="fw-bold mb-1" style="color: #333;">تسجيل الدخول</h3>
+            <p class="text-muted small">مرحباً بك مجدداً في منصة حريف - للمهنيين</p>
+        </div>
+
+        <!-- نموذج تسجيل الدخول -->
+        <form asp-action="Login" method="post">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger small mb-3"></div>
+
+            <!-- حقل البريد الإلكتروني -->
+            <div class="mb-3 text-end">
+                <label class="form-label small fw-bold text-dark">البريد الإلكتروني</label>
+                <input type="email" name="email" class="form-control text-start" placeholder="name@example.com" dir="ltr" required />
+            </div>
+
+            <!-- حقل كلمة المرور -->
+            <div class="mb-4 text-end">
+                <label class="form-label small fw-bold text-dark">كلمة المرور</label>
+                <input type="password" name="password" class="form-control text-start" placeholder="********" dir="ltr" required />
+            </div>
+
+            <!-- زر دخول -->
+            <div class="d-grid mb-3">
+                <button type="submit" class="btn btn-primary py-2 fw-bold" style="background-color: #0d6efd; border: none;">دخول</button>
+            </div>
+        </form>
+
+        <!-- الرابط المضاف داخل البطاقة تحت عبارة "ليس لديك حساب؟" -->
+        <div class="text-center mt-2">
+            <span class="text-muted small">ليس لديك حساب؟ </span>
+            <a asp-controller="Account" asp-action="Register" class="text-decoration-none fw-bold small text-primary">أنشئ حساباً جديداً</a>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

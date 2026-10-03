@@ -1,3 +1,52 @@
-﻿@model List<Hareef.Models.Artisan>
-<h1>قائمة الحرفيين</h1>
-<p>عدد الحرفيين: @Model.Count</p>
+﻿@model IEnumerable<Hareef.Models.Artisan>
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "قائمة الحرفيين";
+    var userEmail = HttpContextAccessor.HttpContext?.Session.GetString("UserEmail");
+    var isAdminStr = HttpContextAccessor.HttpContext?.Session.GetString("IsAdmin");
+    bool isAdmin = !string.IsNullOrEmpty(isAdminStr) && bool.Parse(isAdminStr);
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">دليل الحرفيين والمهنيين</h2>
+
+    <div class="mb-3 text-end">
+        <a asp-controller="Account" asp-action="Register" class="btn btn-primary">سجل كحرفي جديد</a>
+        @if (string.IsNullOrEmpty(userEmail))
+        {
+            <a asp-controller="Account" asp-action="Login" class="btn btn-outline-primary ms-2">دخول</a>
+        }
+        else
+        {
+            <a asp-controller="Account" asp-action="Logout" class="btn btn-outline-danger ms-2">تسجيل الخروج</a>
+        }
+    </div>
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm p-3">
+                    <div class="text-center">
+                        <img src="@item.ProfileImage" class="rounded-circle mb-3" width="80" height="80" style="object-fit:cover;" />
+                    </div>
+                    <h4 class="text-center">@item.Name</h4>
+                    <p class="text-center text-muted">@item.Profession</p>
+                    <p class="text-center">@item.Bio</p>
+
+                    <a href="https://wa.me/@item.WhatsAppNumber" target="_blank" class="btn btn-success w-100 mb-2">تواصل عبر الواتساب</a>
+
+                    @if (isAdmin)
+                    {
+                        <form asp-controller="Artisans" asp-action="Delete" asp-route-id="@item.Id" method="post" class="mt-2">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-danger btn-sm w-100" onclick="return confirm('هل أنت متأكد من حذف هذه البطاقة؟');">حذف البطاقة (أدمن)</button>
+                        </form>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>

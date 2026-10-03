@@ -3,10 +3,11 @@
     public class Artisan
     {
         public int Id { get; set; }
-        public string Name { get; set; } = string.Empty;
-        public string Profession { get; set; } = string.Empty;
-        public string Phone { get; set; } = string.Empty;
-        public string Location { get; set; } = string.Empty;
-        public bool IsActive { get; set; } = true;
+        public string Name { get; set; }
+        public string Email { get; set; } // للإيميل والربط
+        public string Profession { get; set; }
+        public string Bio { get; set; }
+        public string WhatsAppNumber { get; set; }
+        public string ProfileImage { get; set; }
     }
 }

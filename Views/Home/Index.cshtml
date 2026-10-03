@@ -1,8 +1,33 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "الرئيسية - حريف";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container py-5">
+    <div class="row align-items-center justify-content-center min-vh-75 py-5">
+        <div class="col-lg-8 text-center">
+            <!-- أيقونة أو شعار المنصة -->
+            <div class="mb-4">
+                <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center shadow" style="width: 100px; height: 100px;">
+                    <i class="bi bi-tools fs-1"></i>
+                </div>
+            </div>
+
+            <!-- عنوان الترحيب الأساسي -->
+            <h1 class="display-4 fw-bold text-dark mb-3">مرحباً بك في منصة <span class="text-primary">حريف</span></h1>
+            <p class="lead text-muted mb-5 fs-4">الدليل الأمثل للوصول إلى أفضل الحرفيين والمهنيين المعتمدين بكل سهولة وسرعة.</p>
+
+            <!-- الأزرار التوجيهية بالتسلسل الصحيح -->
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a asp-controller="Artisans" asp-action="Index" class="btn btn-primary btn-lg rounded-pill px-5 py-3 fw-bold shadow-sm">
+                    <i class="bi bi-search"></i> تصفح دليل الحرفيين
+                </a>
+                <a asp-controller="Account" asp-action="Login" class="btn btn-outline-dark btn-lg rounded-pill px-5 py-3 fw-bold shadow-sm">
+                    <i class="bi bi-box-arrow-in-right"></i> تسجيل الدخول
+                </a>
+                <a asp-controller="Account" asp-action="Register" class="btn btn-outline-primary btn-lg rounded-pill px-5 py-3 fw-bold shadow-sm">
+                    <i class="bi bi-person-plus"></i> إنشاء حساب جديد
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
